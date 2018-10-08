@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_845956_yoiptn8a2g.css">
+    <link rel="stylesheet" href="js/icheck-1.x/skins/flat/_all.css">
+    <!-- 导入jquery文件 -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <!-- iCheck-1.x的复选框插件-->
+    <script src="js/icheck-1.x/icheck.min.js"></script>
+    <style>
+    *{padding: 0;margin: 0;}
+    body,html {width: 100%;height: 100%;min-width: 1100px;background-color:#9e9ea0;font-size: 14px;overflow: hidden;}
+    a{text-decoration: none;color: #c3c3c3;font-size: 12px;padding-left: 3px;}
+    a:hover{color: #fff;}
+    /*  */
+
+    /* footer_时间 */
+    .music_time{color: rgba(225,225,225,.8);position: relative;width: 100%;font-size: 16px;}
+    .music_time_left{display: inline-block;}
+    .music_time_right{display: inline-block;float: right;}
+    /* footer */
+    .music_footer{position: fixed;bottom: 0;left: 0;height: 86px;width: 100%;}
+    
+    /* .star {float: left;} */
+    .end{position: absolute;right: 0;}
+    .progress{background-color: #c3c3c3;height: 2px;width: 100%;position: relative;margin-bottom: 20px;border-radius: 12px;top: 10px;cursor: pointer}
+    .progress_bar{border-radius: 10px;position: absolute;top: 0;left: 0;height: 100%;width: 10%;background-color: #fff;}
+    .sound_progress{background-color: #c3c3c3;height: 2px;width: 70%;position: relative;margin-bottom: 20px;border-radius: 12px;top: 26px;}
+    .sound_progress_bar{border-radius: 10px;position: absolute;top: 0;left: 0;height: 100%;width: 10%;background-color: #fff;}
+    .music_info{display: inline-block;}
+    .sound{width: 150px;}
+    /* footer */
+    .music_fo_content{display: block;width: 85%;margin: 0 auto;height: 100%;min-width: 1300px;padding: 0 10px;}
+    .music_fo_content a {padding: 5px;position: relative;top: 14px;}
+    .music_fo_content a  .iconfont {font-size: 22px;}
+    .zanting{position: relative;top: 4px;}
+    .icon-xinzanting{font-size: 26px !important;}
+    .music_num{font-size: 20px;color: #c3c3c3;position: relative;top: 13px;left: -5px;}
+    .icon-xinaixin1{color: red;}
+
+
+
+    /* 新 */
+    .player_main{height: 100%;position: relative; margin: 0 6%;}
+    ul li{list-style: none;}
+    /* 头部 */
+    .playernav_bar{width: 100%;height: 50px;line-height: 50px}
+    .playernav_bar_content{float: right;padding-right: 15px;}
+    .icon-touxiang{color: #c3c3c3;}
+    /* footer_list */
+    .list_footer_top{position: relative;margin: 0 20px;width: 60%;}
+    .list_music_img{position: relative;padding-right: 10px;}
+    .list_music_img a{position: absolute;left: 14px;top: 15px;z-index: 2;color: #fff;}
+    .list_music_img a::after{content: "";height: 65px;width: 65px;background-color: rgba(225,225,225,.4);position: absolute;z-index: -1;left: -14px;top: -15px;}
+    .f_l{float: left;}
+    .f_r{float: right;}
+    .music_leftsong{padding-left: 10px !important;}
+    /* 左 内容区 */
+    .player_content{position: absolute;top: 50px;bottom: 18%;width: 100%;min-height: 328px;cursor: default;}
+    .palyercon_left{position: fixed;width: 200px;min-height: 328px;height: 547px;}
+    .left_li{position: relative;top: 10px;padding-left: 50px;line-height: 30px;}
+    .left_li .iconfont {color: #c3c3c3;}
+    .hr{width:190px;border-bottom:1px solid rgba(255,255,255,1);opacity:0.25; margin-top: 15px;margin-left: 4px;}
+    .song_sheet{padding: 10px 10px 0 10px;color: #c3c3c3;}
+
+    /* 右 内容区 */
+    .palyercon_right{margin-left: 200px;height: 100%;}
+    .palyercon_right_tool{margin: 0 10px;padding-bottom: 20px;border-bottom: 1px solid #c3c3c3;}
+    .palyercon_right_tool a{padding: 10px;border: 1px solid #c3c3c3;display: inline-block;width: 90px;text-align: center;margin-right: 5px;}
+    .palyercon_right_tool span {    display: inline-table;position: relative;top: -2px;}
+    /* .palyercon_right_tool .iconfont{vertical-align: middle;} */
+    /* 搜索音乐 */
+    .search_music{display: inline-block;float: right;width:185px;height:25px;border:1px solid rgba(255,255,255,1);border-radius:13px;top: 10px;position: relative;}
+    .search_music input {height: 22px;border-radius: 13px;width: 150px;background-color: transparent;border: none;outline: none;color: #c3c3c3;font-size: 12px;position: relative;top: -1px;}
+    .search_music .iconfont {color: rgba(225,225,225,.5);padding-left: 5px;display: inline-block;padding-top: 3px;}
+
+    /* 列表 */
+    .palyercon_right_list{position: relative;height: 450px;overflow-x: hidden;overflow-y: scroll;margin-top: 10px;}
+    .palyercon_right_list::-webkit-scrollbar{height: 30px;width: 7px;background-color: rgba(107, 105, 105, 0.13);border-radius: 10px;}
+    .palyercon_right_list::-webkit-scrollbar-thumb{height: 10px;background-color: #c3c3c3;border-radius: 10px;} 
+
+    .songlist_header{height: 50px;line-height: 50px;border-bottom:1px solid #c3c3c3;color: #c3c3c3;position: relative;margin: 0 10px;}
+    .songlist_header_list{display: inline-block;}
+    .songlist_header_song{width: 68%;}
+    .songlist_header_person{width: 26%;color: inherit;}
+    .songlist_header_time{position: absolute;top: 0;right: 38px;width: 50px;}
+    .songlist_header_check{padding-right: 10px;}
+    input[type="checkbox"]{height: 14px;width: 14px;}
+
+    .songer_tools{display: inline-block;float: right;padding-right: 10px;}
+    /* none */
+    .songer_tools a{padding: 0 5px;}
+
+    .song_cursor{cursor: pointer;}
+    .song_list_content:hover {background-color: rgba(107, 105, 105, 0.13);color: #fff;}
+    .song_list:hover .songer_tools{display: inline-block;color: #fff;}
+    /* .song_list:hover a{color: #fff;} */
+    .song_list_li{padding: 0 10px;}
+
+
+    /* 添加到 */
+    .add_songer{position: absolute;background-color: rgb(255, 255, 255);top: 39px;left: 373px;z-index: 4;}
+    .add_songer ul {width: 110px;text-align: center;}
+    .add_songer ul li{line-height: 50px;}
+
+    /* 添加 */
+    .palyercon_right_tool_add:active .add_songer{background-color: red;}
+
+    /* 详细 */
+    .xiangxi{position: absolute;background-color: rgb(255, 255, 255);top: 31px;left: 701px;}
+    .xiangxi ul {width: 110px;text-align: center;}
+    .xiangxi ul li:hover,.add_songer ul li:hover {background-color: rgb(65, 62, 62);color: #fff;}
+
+
+    /* 弹框 */
+    .erro_frame{position: absolute;width: 154px;height: 136px;background:rgba(51,51,51,1);opacity:0.46;border-radius:5px;top: 50%;left: 50%;margin-top: -142px;margin-left: -65px;}
+    .erro_frame .iconfont {font-size: 60px;padding: 10px 0;}
+    .erro_frame_commond {display: block;text-align: center;color: #fff;}
+    </style>
+
+</head>
+<body>
+    <div class="player_main">
+        <!-- 头部 -->
+        <div class="playernav_bar">
+           
+            <a class="playernav_bar_content" href="javascript:;">退出</a>            
+            <a class="playernav_bar_content" href="javascript:;">登录</a>
+            <a class="playernav_bar_content"><i class="iconfont icon-touxiang"></i></a>
+        </div> 
+        <!-- 内容区 -->
+        <div class="player_content">
+            <div class="palyercon_left">
+                <ul>
+                    <li class="left_li">
+                        <i class="iconfont icon-quanbu"></i>
+                        <a href="javascript:;">全部歌曲</a>
+                    </li>
+                    <li class="left_li">
+                        <i class="iconfont icon-lishi"></i>
+                        <a href="javascript:;">播放历史</a>
+                    </li>
+                    <li class="left_li">
+                        <i class="iconfont icon-aixinkong"></i>
+                        <a href="javascript:;">我喜欢</a>
+                    </li>
+                    <li class="left_li">
+                        <i class="iconfont icon-shoucang"></i>
+                        <a href="javascript:;">收藏</a>
+                    </li>
+                </ul>
+                <div class="hr"></div>
+                <div class="song_sheet">
+                    <span>我创建的歌单</span>
+                    <a href="javascript:;" class="f_r"><i class="iconfont icon-jiahaotianjia"></i></a>
+                </div>
+                <ul>
+                    <li class="left_li">
+                        <i class="iconfont icon-yinle"></i>
+                        <a href="javascript:;">歌单一</a>
+                    </li>
+                    <li class="left_li">
+                        <i class="iconfont icon-yinle"></i>
+                        <a href="javascript:;">歌单二</a>
+                    </li>
+                    <li class="left_li">
+                        <i class="iconfont icon-yinle"></i>
+                        <a href="javascript:;">歌单三</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="palyercon_right">
+                <!-- 编辑区 -->
+                <div class="palyercon_right_tool">
+                    <a href="javascript:;">
+                        <i class="iconfont icon-shangchuancopyban"></i>
+                        <span>上传歌曲</span>
+                    </a>
+                    <a href="javascript:;" class="palyercon_right_tool_add" id="tooladd">
+                        <i class="iconfont icon-tianjia"></i>
+                        <span>添加到</span>
+                    </a>
+                    <a href="javascript:;">
+                        <i class="iconfont icon-shoucang"></i>
+                        <span>收藏</span>
+                    </a>
+                    <a href="javascript:;">
+                        <i class="iconfont icon-lajitong"></i>
+                        <span>删除</span>
+                    </a>
+                    <div class="search_music">
+                        <i class="iconfont icon-fangdajing"></i>
+                        <input type="text" placeholder="搜索音乐">
+                    </div>
+                </div>
+                <!-- 添加 -->
+                <div class="add_songer" style="display:none;" id="addsong">
+                    <ul>
+                        <li><a href="javascript:;">我喜欢</a></li>
+                        <li><a href="javascript:;">收藏</a></li>
+                        <li>添加到歌单</li>
+                        <li><a href="javascript:;">歌单一</a></li>
+                        <li><a href="javascript:;">歌单二</a></li>
+                    </ul>
+                </div>
+                <!-- 详细 -->
+                <!-- 播放列表 -->
+                <div class="palyercon_right_list">
+                   <ul class="songlist_header">
+                       <li class=" song_list_li songlist_header_list songlist_header_check"><input type="checkbox"></li>
+                       <li class="songlist_header_list songlist_header_song">歌曲</li>
+                       <li class="songlist_header_list songlist_header_person">歌手</li>
+                       <li class="songlist_header_list songlist_header_time">时长</li>
+                   </ul> 
+                   <ul class="songlist_header">
+                       <li class="song_list">
+                            <div class="song_list_content">
+                                <div class="songlist_header_list songlist_header_check song_list_li song_cursor"><input type="checkbox"></div>
+                                <div class="songlist_header_list songlist_header_song song_cursor">
+                                    <span>1</span>
+                                    <span>一路向北</span>
+                                    <div class="songer_tools ">
+                                        <a href="javascript:;"><i class="iconfont icon-aixinkong1"></i></a>
+                                        <a href="javascript:;"><i class="iconfont icon-bofangjianxiao"></i></a>
+                                        <a href="javascript:;" id="xiangxi"><i class="iconfont icon-gongneng" ></i></a>
+                                        <!-- 详细 -->
+                                        <div class="xiangxi" id="xiangxixi" style="display:none;">
+                                            <ul>
+                                                <li><a href="javascript:;">播放</a></li>
+                                                <li><a href="javascript:;">收藏</a></li>
+                                                <li><a href="javascript:;">下载</a></li>
+                                                <li><a href="javascript:;">
+                                                        <span>添加到</span>
+                                                        <span>></span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="songlist_header_list songlist_header_person song_cursor">周杰伦</div>
+                                <div class="songlist_header_list songlist_header_time ">04:10</div>
+                            </div> 
+                       </li>
+
+                   </ul>
+                </div>
+            </div>
+        </div>   
+        <!-- footer -->
+        <div class="music_footer">
+            <div class="music_fo_content">
+                <div class=" list_music_img ">
+                    <img class="f_l" src="https://y.gtimg.cn/music/photo_new/T002R300x300M000002MAeob3zLXwZ.jpg?max_age=2592000" alt="歌曲图片" height="65" width="65">
+                    <a href="javascript:;" class="f_l"><i class="iconfont icon-xinzhankai"></i></a>
+                </div>       
+                <a href="javascript:;" class="music_leftsong"><i class="iconfont icon-youbofang-copy-copy"></i></a>
+                <div class="music_info zanting">
+                    <a href="javascript:;"><i class="iconfont icon-xinzanting"></i></a>
+                    <a href="javascript:;" style="display: none;"><i class="iconfont icon-xinzanting1"></i></a>                   
+                </div>
+                <a href="javascript:;"><i class="iconfont icon-youbofang"></i></a>       
+                <div class="list_footer_top music_info">
+                    <!-- 播放时间 -->
+                    <div class="music_time">
+                        <div class="music_time_left">
+                            <span>一路向北</span>-
+                            <span>周杰伦</span>
+                        </div>
+                        <div class="music_time_right">
+                            <span >00:00</span>/<span >03:20</span>  
+                        </div>        
+                    </div>
+                    <!-- 进度条 -->
+                    <div class="progress"><div class="progress_bar"></div></div>                
+                </div>
+                <div class="music_info">
+                    <a href="javascript:;"><i class="iconfont icon-danquxunhuan"></i></a> 
+                    <a href="javascript:;" style="display: none;"><i class="iconfont icon-shunxubofang"></i></a>
+                    <a href="javascript:;" style="display: none;"><i class="iconfont icon-icon-suijibofang"></i></a>
+                    <a href="javascript:;" style="display: none;"><i class="iconfont icon-liebiaoxunhuan"></i></a>  
+                </div>
+                <div class="music_info">
+                    <a href="javascript:;"><i class="iconfont icon-xinaixin1"></i></a>
+                </div>
+                <a href="javascript:;"><i class="iconfont icon-xinxiazai"></i></a>   
+                <div class="music_info sound">
+                    <a href="javascript:;"><i class="iconfont icon-xinyinliang"></i></a>
+                    <span class="sound_progress music_info"><span class="sound_progress_bar"></span></span> 
+                </div>
+            </div>
+        </div>
+        <!--弹框  -->
+        <div class="erro_frame" style="display:none">
+            <i class="iconfont icon-danchujinggao erro_frame_commond"></i>
+            <div class="erro_frame_commond">请选择操作的单曲</div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+          $('input').iCheck({
+            checkboxClass: 'icheckbox_flat-grey',
+            radioClass: 'iradio_flat-grey'
+          });
+        });
+        // $("#toolslist").hover(function(){
+        //     $("#tools").css()
+        // })
+        // var mark = true;
+        // function addsonger(val) {
+            
+        //     if(mark){
+        //         document.getElementById(val).style.display = 'block';
+        //         mark = false;
+        //         return false;
+        //     }else if(mark == false  || window.event){
+        //         document.getElementById(val).style.display = 'none';
+        //         mark = true;
+        //     }
+        // }
+        $(document).ready(function(){
+            $("#xiangxi").click(function(e){
+                $("#xiangxixi").fadeToggle(400) ;
+                $("#addsong").hide();
+                e.stopPropagation();
+            });
+            $("#tooladd").click(function(e){
+                $("#xiangxixi").hide();
+                $("#addsong").fadeToggle(400) ;
+                e.stopPropagation();
+            })
+            $(document).click(function(){
+                $("#xiangxixi").hide();
+                $("#addsong").hide();
+            })
+        })
+    
+    </script>
+</body>
+</html>
