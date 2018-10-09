@@ -38,20 +38,16 @@
             <div class="palyercon_left">
                 <ul>
                     <li class="left_li">
-                        <i class="iconfont icon-quanbu"></i>
-                        <a href="javascript:;">全部歌曲</a>
+                        <a href="javascript:;"><i class="iconfont icon-quanbu"></i><span>全部歌曲</span></a>
                     </li>
                     <li class="left_li">
-                        <i class="iconfont icon-lishi"></i>
-                        <a href="javascript:;">播放历史</a>
+                        <a href="javascript:;"><i class="iconfont icon-lishi"></i><span>播放历史</span></a>
                     </li>
                     <li class="left_li">
-                        <i class="iconfont icon-aixinkong"></i>
-                        <a href="javascript:;">我喜欢</a>
+                        <a href="javascript:;"><i class="iconfont icon-aixinkong"></i><span>我喜欢</span></a>
                     </li>
                     <li class="left_li">
-                        <i class="iconfont icon-shoucang"></i>
-                        <a href="javascript:;">收藏</a>
+                        <a href="javascript:;"><i class="iconfont icon-shoucang"></i><span>收藏</span></a>
                     </li>
                 </ul>
                 <div class="hr"></div>
@@ -61,16 +57,13 @@
                 </div>
                 <ul>
                     <li class="left_li">
-                        <i class="iconfont icon-yinle"></i>
-                        <a href="javascript:;">歌单一</a>
+                        <a href="javascript:;"><i class="iconfont icon-yinle"></i><span>歌单一</span></a>
                     </li>
                     <li class="left_li">
-                        <i class="iconfont icon-yinle"></i>
-                        <a href="javascript:;">歌单二</a>
+                        <a href="javascript:;"><i class="iconfont icon-yinle"></i><span>歌单二</span></a>
                     </li>
                     <li class="left_li">
-                        <i class="iconfont icon-yinle"></i>
-                        <a href="javascript:;">歌单三</a>
+                        <a href="javascript:;"> <i class="iconfont icon-yinle"></i><span>歌单三</span></a>
                     </li>
                 </ul>
             </div>
@@ -110,93 +103,11 @@
                 </div>
                 <!-- 详细 -->
                 <!-- 播放列表 -->
-                <div class="palyercon_right_list">
-                    <ul class="songlist_header">
-                        <li class=" song_list_li songlist_header_list songlist_header_check"><input type="checkbox"></li>
-                        <li class="songlist_header_list songlist_header_song">歌曲</li>
-                        <li class="songlist_header_list songlist_header_person">歌手</li>
-                        <li class="songlist_header_list songlist_header_time">时长</li>
-                    </ul> 
-                    <ul class="songlist_header">
-                        <li class="song_list">
-                            <div class="song_list_content">
-                                <div class="songlist_header_list songlist_header_check song_list_li song_cursor"><input type="checkbox"></div>
-                                <div class="songlist_header_list songlist_header_song song_cursor">
-                                    <span>1</span>
-                                    <span>一路向北</span>
-                                    <div class="songer_tools ">
-                                        <a href="javascript:;"><i class="iconfont icon-aixinkong1"></i></a>
-                                        <a href="javascript:;"><i class="iconfont icon-bofangjianxiao"></i></a>
-                                        <a href="javascript:;" id="xiangxi"><i class="iconfont icon-gongneng" ></i></a>
-                                        <!-- 详细 -->
-                                        <div class="xiangxi" id="xiangxixi" style="display:none;">
-                                            <ul>
-                                                <li><a href="javascript:;">播放</a></li>
-                                                <li><a href="javascript:;">收藏</a></li>
-                                                <li><a href="javascript:;">下载</a></li>
-                                                <li><a href="javascript:;">
-                                                        <span>添加到</span>
-                                                        <span>></span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="songlist_header_list songlist_header_person song_cursor">周杰伦</div>
-                                <div class="songlist_header_list songlist_header_time ">04:10</div>
-                            </div> 
-                        </li>
-
-                    </ul>
-                </div>
+                <div class="palyercon_right_list" id="songlist"></div>
             </div>
         </div>   
         <!-- footer -->
-        <div class="music_footer">
-            <div class="music_fo_content">
-                <div class=" list_music_img " id="imgshow">
-                    <img class="f_l" src="https://y.gtimg.cn/music/photo_new/T002R300x300M000002xekbX0f1kdB.jpg?max_age=2592000" alt="歌曲图片" height="65" width="65">
-                    <a href="javascript:;" class="f_l"><i class="iconfont icon-xinzhankai"></i></a>
-                </div>       
-                <a href="javascript:;" class="music_leftsong"><i class="iconfont icon-youbofang-copy-copy"></i></a>
-                <div class="music_info zanting">
-                    <a href="javascript:;"><i class="iconfont icon-xinzanting" id="zanting"></i></a>
-                    <a href="javascript:;"><i class="iconfont icon-xinzanting1"></i></a>                   
-                </div>
-                <a href="javascript:;"><i class="iconfont icon-youbofang"></i></a>       
-                <div class="list_footer_top music_info">
-                    <!-- 播放时间 -->
-                    <div class="music_time">
-                        <div class="music_time_left">
-                            <span>一路向北</span>-
-                            <span>周杰伦</span>
-                        </div>
-                        <div class="music_time_right">
-                            <span >00:00</span>/<span >03:20</span>  
-                        </div>        
-                    </div>
-                    <!-- 进度条 -->
-                    <div class="progress"><div class="progress_bar"></div><span class="progress_toll"></span></div> 
-                                   
-                </div>
-                <div class="music_info">
-                    <a href="javascript:;"><i class="iconfont icon-danquxunhuan"></i></a> 
-                    <a href="javascript:;" style="display: none;"><i class="iconfont icon-shunxubofang"></i></a>
-                    <a href="javascript:;" style="display: none;"><i class="iconfont icon-icon-suijibofang"></i></a>
-                    <a href="javascript:;" style="display: none;"><i class="iconfont icon-liebiaoxunhuan"></i></a>  
-                </div>
-                <div class="music_info">
-                    <a href="javascript:;"><i class="iconfont icon-xinaixin1"></i></a>
-                </div>
-                <a href="javascript:;"><i class="iconfont icon-xinxiazai"></i></a>   
-                <div class="music_info sound">
-                    <a href="javascript:;"><i class="iconfont icon-xinyinliang"></i></a>
-                    <span class="sound_progress music_info"><span class="sound_progress_bar"></span> <span class="progress_toll_sound"></span></span> 
-                   
-                </div>
-            </div>
-        </div>
+        <div class="music_footer" id="footerpage"></div>
         <!--弹框  -->
         <div class="erro_frame" style="display:none">
             <i class="iconfont icon-danchujinggao erro_frame_commond"></i>
@@ -205,200 +116,28 @@
     </div>
 
     <!-- 歌词界面 -->
-    <div class="bobo" style="display:none" id="gecipage">
-        <a href="javascript:;" class="logo" id="logodowon"><i class="iconfont icon-xialasanjiao-copy"></i></a>   
-        <div class="mod_music">
-            <!-- 歌词内容区 -->
-            <div class="music_content">
-                <!-- music-img -->
-                <div class="music_content_left"><img src="https://y.gtimg.cn/music/photo_new/T002R300x300M000002xekbX0f1kdB.jpg?max_age=2592000" alt="歌曲图片" height="300" width="300"></div>
-                <!-- music geci -->
-                <div class="music_content_right">
-                    <h1 class="music_header">一路向北</h1>
-                    <div class="song_info_name">
-                        <span>歌手:</span>
-                        <a href="javascript:;">Austin Mahone</a>
-                    </div>
-                    <div class="song_info_zj">
-                        <span>专辑:</span>
-                        <a href="javascript:;">ForMe+You</a>
-                    </div>
-                    <div class="song_info_gc">
-                        <p>一路向北 (《头文字D》电影插曲) - 周杰伦 (Jay Chou)</p>
-                        <p>词：方文山</p>
-                        <p>曲：周杰伦</p>
-                        <p>后视镜里的世界</p>
-                        <p>越来越远的道别</p>
-                        <p>你转身向背 侧脸还是很美</p>
-                        <p>我用眼光去追 竟听见你的泪</p>
-                        <p>在车窗外面徘徊 是我错失的机会</p>
-                        <p>你站的方位 跟我中间隔着泪</p>
-                        <p>街景一直在后退</p>
-                        <p>你的崩溃在窗外零碎</p>
-                        <p>我一路向北 离开有你的季节</p>
-                        <p>你说你好累 已无法再爱上谁</p>
-                        <p>风在山路吹</p>
-                        <p>过往的画面全都是我不对</p>
-                        <p> 细数惭愧 我伤你几回</p>
-                        <p>后视镜里的世界 越来越远的道别</p>
-                        <p>你转身向背 侧脸还是很美</p>
-                        <p>我用眼光去追 竟听见你的泪</p>
-                        <p>在车窗外面徘徊 是我错失的机会</p>
-                        <p>你站的方位 跟我中间隔着泪</p>
-                        <p>街景一直在后退</p>
-                        <p>你的崩溃在窗外零碎</p>
-                        <p>我一路向北 离开有你的季节</p>
-                        <p>你说你好累 已无法再爱上谁</p>
-                        <p>风在山路吹</p>
-                    </div>
-                </div>
-            </div> 
-            <!-- 底部播放条 -->
-            <div class="music_footer">
-                <div class="music_fo_content">       
-                    <a href="javascript:;"><i class="iconfont icon-youbofang-copy-copy"></i></a>
-                    <div class="music_info zanting">
-                        <a href="javascript:;"><i class="iconfont icon-xinzanting"></i></a>
-                        <a href="javascript:;" style="display: none;"><i class="iconfont icon-xinzanting1"></i></a>                   
-                    </div>
-                    <a href="javascript:;"><i class="iconfont icon-youbofang"></i></a>       
-                    <div class="footer_top music_info">
-                        <!-- 播放时间 -->
-                        <div class="music_time">
-                            <div class="music_time_left">
-                                <span>一路向北</span>-
-                                <span>周杰伦</span>
-                            </div>
-                            <div class="music_time_right">
-                                <span >00:00</span>/<span >03:20</span>  
-                            </div>        
-                        </div>
-                        <!-- 进度条 -->
-                        <div class="progress"><div class="progress_bar"></div><span class="progress_toll"></span></div>                
-                    </div>
-                    <div class="music_info">
-                        <a href="javascript:;"><i class="iconfont icon-danquxunhuan"></i></a> 
-                        <a href="javascript:;" style="display: none;"><i class="iconfont icon-shunxubofang"></i></a>
-                        <a href="javascript:;" style="display: none;"><i class="iconfont icon-icon-suijibofang"></i></a>
-                        <a href="javascript:;" style="display: none;"><i class="iconfont icon-liebiaoxunhuan"></i></a>  
-                    </div>
-                    <div class="music_info">
-                        <a href="javascript:;"><i class="iconfont icon-xinaixin1"></i></a>
-                    </div>
-                    <a href="javascript:;"><i class="iconfont icon-xinxiazai"></i></a>   
-                    <div class="music_info sound">
-                        <a href="javascript:;"><i class="iconfont icon-xinyinliang"></i></a>
-                        <span class="sound_progress music_info"><span class="sound_progress_bar"></span><span class="progress_toll_sound"></span></span> 
-                    </div>
-                    <div class="music_info" id="playerlan">
-                        <a href="javascript:;" title="播放列栏"><i class="iconfont icon-xinbofangliebiao"></i><span class="music_num">4</span></a>        
-                    </div>
-
-                </div>
-            </div>
-            <!-- 播放列栏  -->
-            <div class="player" id="player" style="display:none;">
-                <h2>播放列表</h2>
-                <div class="player_tool">
-                    <div class="player_tool_num music_info"><span>3</span>首歌曲</div>
-                    <div class="player_tool_del music_info">
-                        <i class="iconfont icon-lajitong"></i>
-                        <span>删除</span>
-                    </div>
-                </div>
-                <ul class="player_list">
-                    <li class="player_list_li">
-                        <div class="player_song_title music_info">
-                            <h3>一路向北</h3>
-                            <p>周杰伦</p>
-                        </div>
-                        <div class="player_song_iconfont music_info" id="playericon" style="display:none;">
-                            <a href="javascript:;"><i class="iconfont icon-bofangjianxiao"></i></a>
-                            <a href="javascript:;"> <i class="iconfont icon-aixinkong1"></i></a>
-                        </div>
-                        <div class="player_song_time music_info">
-                            <span>3:20</span>
-                        </div>
-                    </li>
-                </ul>
-            </div>            
-        </div>   
-    </div>       
-
+    <div class="bobo" style="display:none" id="gecipage"></div>
     <!-- 登陆页面 -->
-    <div class="commingpage" style="display:none" id="landingPage">
-        <div class="landing">
-            <div class="landing_title"><i class="iconfont icon-guanbi"></i></div>
-            <p class="landing_title_tt">账号密码登录</p>
-            <form action="" id="userform" method="post" onsubmit="return saveUser()">
-                <div class="form_content">
-                    <label class="form_label">
-                        <i class="iconfont icon-touxiang1"></i>
-                        <input type="text" name="username" id=""  placeholder="请输入用户名">
-                        <i class="iconfont icon-shanchuyinying"></i>
-                    </label>
-                </div>
-                <div class="form_content">
-                    <label class="form_label">
-                        <i class="iconfont icon-suo"></i>
-                        <input type="password" name="username" id="" autofocus="autofocus" placeholder="请输入密码">
-                        <i class="iconfont icon-shanchuyinying"></i>
-                    </label>
-                </div>
-                <input type="submit" name="" id="">
-            </form> 
-            <div class="landing_bottom">
-                <span>忘记密码？</span>
-                <span>注册账号</span>
-                <span>意见反馈</span>
-            </div>           
-        </div>
-
-    </div>
-
+    <div class="commingpage" style="display:none" id="landingPage"></div>
     <!-- 上传界面  -->
-    <div class="commingpage" id="uploadpage" style="display:none">
-        <div class="upload_page" >
-            <div class="upload_page_title">
-                <span><img src="img/logo1.gif" alt="" width="25" height="20">上传歌曲</span>
-                <span class="up_landing_title" id="upload"><i class="iconfont icon-guanbi"></i></span>
-            </div>
-            <div class="upload_page_file upload_page_title">
-                <form class="page_file">
-                    <div class="test">
-                        <span>选择文件</span>   
-                    </div>
-                    <input type="file" name="" id="">
-                    <input type="button" value="上传">
-                    <!-- <button>上传</button> -->
-                </form>
-            </div>
-            <div class="upload_page_list">
-                <ul class="uplist_title">
-                    <li>歌曲</li>
-                    <li>文件大小</li>
-                    <li>操作</li>
-                </ul>
-                <ul class="uplist_list uplist_title">
-                    <li>一路向北</li>
-                    <li>4.4k</li>
-                    <li><a href="javascript:;">删除</a></li>
-                </ul> 
-            </div>
-        </div>
-    </div>
-
+    <div class="commingpage" id="uploadpage" style="display:none"></div>
     <!-- 背景模糊 -->
     <div class="bg-img-mask"></div>
     <div class="bg-img"></div>
     
-    <script type="text/javascript" src="js/music.js"></script>
-    <script type="text/javascript" src="js/player.js"></script>
+    
+    <script type="text/javascript" src="js/scroll.js"></script>
     <script>
+        //load()方法页面加载
+        $("#gecipage").load("pages/lyricpage.html");
+        $("#landingPage").load("pages/loginpage.html");
+        $("#uploadpage").load("pages/uploadpage.html");
+        $("#songlist").load("pages/songlistpage.html");
+        $("#footerpage").load("pages/footerpage.html",function(){
+            new scrollDom("pre","prevalue","precess");
+            new scrollDom("pre1","prevalue1","precess1")
+        });
         $(document).ready(function(){
-
-        
-
         let play ={
             init(){
                 //播放停止切换
@@ -440,6 +179,7 @@
             $("#xiangxi").click(function(e){
                 $("#xiangxixi").fadeToggle(400) ;
                 $("#addsong").hide();
+                $(".songer_tools").css("display"," inline-block")
                 e.stopPropagation();
             });
             $("#tooladd").click(function(e){
@@ -448,8 +188,11 @@
                 e.stopPropagation();
             })
             $(document).click(function(){
-                $("#xiangxixi").hide();
-                $("#addsong").hide();
+                // if(!(event.target == dom || $(event.target).closest(".xiangxi").length>0)){
+                    $("#xiangxixi").hide();
+                                     
+                // }
+                  $("#addsong").hide();
                 // $("#player").hide();
             })
             $("#imgshow").click(function(){
@@ -507,6 +250,7 @@
             //     $(".icon-xinzanting1").css("opacity","1");
             // })
         })
+
     
     </script>
 </body>

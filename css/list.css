@@ -20,8 +20,6 @@ a:hover{color: #fff;}
 .sound{width: 150px;}
 /* footer */
 .music_fo_content{display: block;width: 85%;margin: 0 auto;height: 100%;min-width: 1300px;padding: 0 10px;}
-.music_fo_content a {padding: 5px;position: relative;top: 14px;}
-.music_fo_content a  .iconfont {font-size: 18px;}
 
 .music_num{font-size: 16px;color: #c3c3c3;position: relative;top: 0;left: 0;}
 .icon-xinaixin1{color: #e65757;}
@@ -36,7 +34,8 @@ ul li{list-style: none;}
 .playernav_bar_content{float: right;padding-right: 15px;}
 .icon-touxiang{color: #c3c3c3;}
 /* footer_list */
-.list_footer_top{position: relative;margin: 0 20px;width: 60%;}
+.list_footer_top{position: relative;margin: 0 20px;width: 60%;
+    height: 70px;}
 .list_music_img{position: relative;padding-right: 10px;}
 .list_music_img a{position: absolute;left: 14px;top: 15px;z-index: 2;color: #fff;}
 .list_music_img a::after{content: "";height: 65px;width: 65px;background-color: rgba(225,225,225,.4);position: absolute;z-index: -1;left: -14px;top: -15px;}
@@ -47,7 +46,10 @@ ul li{list-style: none;}
 .player_content{position: absolute;top: 50px;bottom: 18%;width: 100%;min-height: 328px;cursor: default;}
 .palyercon_left{position: fixed;width: 200px;min-height: 328px;height: 547px;}
 .left_li{position: relative;top: 10px;padding-left: 50px;line-height: 30px;}
-.left_li .iconfont {color: #c3c3c3;}
+.left_li .iconfont {color: #c3c3c3;position: relative;top: 2px;}
+.left_li span{padding-left: 5px;}
+.left_li:hover{background-color: rgba(107, 105, 105, 0.13);}
+.iconfont:hover{color: #fff;}
 .hr{width:190px;border-bottom:1px solid rgba(255,255,255,1);opacity:0.25; margin-top: 15px;margin-left: 4px;}
 .song_sheet{padding: 10px 10px 0 10px;color: #c3c3c3;}
 
