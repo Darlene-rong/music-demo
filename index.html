@@ -18,7 +18,7 @@
     <script src="js/icheck-1.x/icheck.min.js"></script>
     <link rel="stylesheet" href="css/geci.css">
     <link rel="stylesheet" href="css/list.css">
-    <link rel="stylesheet" href="https://at.alicdn.com/t/font_845956_yoiptn8a2g.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_845956_pjczjbzau9.css">
     <style>
         .bobo{position: absolute;top:100%;left: 0;}
     </style>
@@ -127,6 +127,7 @@
     
     
     <script type="text/javascript" src="js/scroll.js"></script>
+    <script type="text/javascript" src="js/player.js"></script>
     <script>
         //load()方法页面加载
         $("#gecipage").load("pages/lyricpage.html");
@@ -142,31 +143,59 @@
             init(){
                 //播放停止切换
                 this.togglePlay();
+                this.prPrev();
+                this.next();
+                this.muted();
+                console.log("1a")
             },
-            pre(){
-
+            //上一首切换
+            prPrev(){
+                var $this = this;
+                $(".icon-youbofang-copy-copy").click(function(){
+                    $("#stopfooter i").removeClass("icon-xinzanting1");
+                    $("#stopfooter i").addClass("icon-xinzanting");
+                    playerMusic.prev();
+                   
+                })
             },
             //暂停播放切换
             togglePlay(){
-                // $()
+                $("#stopfooter").click(function(){
+                    console.log($("#stopfooter i").hasClass("icon-xinzanting1"))
+                    if($("#stopfooter i").hasClass("icon-xinzanting1")){
+                        $("#stopfooter i").removeClass("icon-xinzanting1");
+                        $("#stopfooter i").addClass("icon-xinzanting");
+                        playerMusic.play();
+
+                    } else {
+                        $("#stopfooter i").removeClass("icon-xinzanting");
+                        $("#stopfooter i").addClass("icon-xinzanting1");
+                        playerMusic.stop();
+                    }
+                })
             },
+            //下一首切换
             next(){
-
+                $(".icon-youbofang").click(function(){
+                    $("#stopfooter i").removeClass("icon-xinzanting1");
+                    $("#stopfooter i").addClass("icon-xinzanting");
+                    playerMusic.next();
+                })
             },
-            drag(){
-
-            },
-            progross(){
-
-            },
-            type(){
-
-            },
-            like(){
-
-            },
-            auido(){
-
+            //静音切换
+            muted(){
+                $("#metd").click(function(){
+                    if($("#metd i").hasClass("icon-xinyinliang")){
+                        $("#metd i").removeClass("icon-xinyinliang");
+                        $("#metd i").addClass("icon-yinliang");
+                        playerMusic.stopVolome();  
+                    } else {
+                        $("#metd i").removeClass("icon-yinliang");
+                        $("#metd i").addClass("icon-xinyinliang");
+                        playerMusic.stopVolome();  
+                    }
+                    
+                })
             }
         }
         play.init();
@@ -235,20 +264,6 @@
                 $("#uploadpage").hide();
             });
 
-            // //暂停按钮切换
-            // $(".icon-xinzanting1").click(function() {
-            //     $(".icon-xinzanting").css("opacity","1");
-            //     $(".icon-xinzanting1").css("opacity","0");
-            // });
-            // $(".icon-xinzanting").click(function() {
-            //     $(this)[0].mark= 
-
-            //     $(this).hasClass("icon-xinzanting")
-
-            //     console.log("3")
-            //     $(".icon-xinzanting").css("opacity","0")
-            //     $(".icon-xinzanting1").css("opacity","1");
-            // })
         })
 
     

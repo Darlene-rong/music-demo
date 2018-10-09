@@ -3,7 +3,7 @@
     <!-- 歌词内容区 -->
     <div class="music_content">
         <!-- music-img -->
-        <div class="music_content_left"><img src="https://y.gtimg.cn/music/photo_new/T002R300x300M000002xekbX0f1kdB.jpg?max_age=2592000" alt="歌曲图片" height="300" width="300"></div>
+        <div class="music_content_left"><img id="image" src="https://y.gtimg.cn/music/photo_new/T002R300x300M000001IqAXi1RikWP.jpg?max_age=2592000" alt="歌曲图片" height="300" width="300"></div>
         <!-- music geci -->
         <div class="music_content_right">
             <h1 class="music_header">一路向北</h1>
@@ -123,55 +123,3 @@
         </ul>
     </div>            
 </div>   
-<script>
-    console.log(1)
-        var scrollDom = function(boxDom,preDom,precessDom){
-    this.boxDom = document.getElementById(boxDom);
-    this.preDom = document.getElementById(preDom);
-    this.precessDom = document.getElementById(precessDom);
-    this.init();
-};
-scrollDom.prototype = {
-    init: function(){
-        var max = this.precessDom.offsetWidth - document.getElementById("testbox").offsetWidth;
-        console.log(this.precessDom.offsetWidth)
-        var $this = this;
-        //鼠标按键被按下时发生的事件
-        $this.preDom.onmousedown = function(e) {
-            
-            // var $this = this;
-            var domy = e.clientX;//返回事件被触发的时候，鼠标指针的水平坐标
-            var left = this.offsetLeft;//初始的left值
-            // onmousemove	鼠标被移动。
-            document.onmousemove = function(e) {
-                var thisX = e.clientX;//clientX	返回当事件被触发时，鼠标指针的水平坐标。boxDom
-                var nl = thisX - domy + left;
-            
-                if(nl <= 0){
-                    $this.ondrag(0)
-                }else if(nl >= max){
-                    $this.ondrag(max)
-                 
-                }else{
-                    $this.ondrag(nl)
-                    
-                }
-           
-            };
-            
-            //onmouseup	鼠标按键被松开。
-            document.onmouseup = function() {
-                document.onmousemove = null;
-                document.onmouseup = null;
-            } 
-        }
-    },
-    ondrag: function(x){
-        this.boxDom.style.width = x + "px";
-        this.preDom.style.left = x + "px";
-  
-    }
-}
-new scrollDom("pre","prevalue","precess")
-
-</script>

@@ -1,13 +1,13 @@
 <div class="music_fo_content">
         <div class=" list_music_img " id="imgshow">
-            <img class="f_l" src="https://y.gtimg.cn/music/photo_new/T002R300x300M000002xekbX0f1kdB.jpg?max_age=2592000" alt="歌曲图片" height="65" width="65">
+            <img class="f_l" src="https://y.gtimg.cn/music/photo_new/T002R300x300M000001IqAXi1RikWP.jpg?max_age=2592000" alt="歌曲图片" height="65" width="65">
             <a href="javascript:;" class="f_l tuzi"><i class="iconfont icon-xinzhankai"></i></a>
         </div>       
         <a href="javascript:;" class="music_leftsong tuzi"><i class="iconfont icon-youbofang-copy-copy"></i></a>
-        <div class="music_info zanting">
-            <a href="javascript:;" class="tuzi"><i class="iconfont icon-xinzanting" id="zanting"></i></a>
-            <a href="javascript:;" class="tuzi"><i class="iconfont icon-xinzanting1"></i></a>                   
-        </div>
+        <!-- <div class="music_info zanting"> -->
+            <!-- <a href="javascript:;" class="tuzi" ><i class="iconfont icon-xinzanting" id="zanting"></i></a> -->
+            <a href="javascript:;" class="tuzi "  id="stopfooter"><i class="iconfont icon-xinzanting1"></i></a>                   
+        <!-- </div> -->
         <a href="javascript:;" class="tuzi"><i class="iconfont icon-youbofang"></i></a>       
         <div class="list_footer_top music_info">
             <!-- 播放时间 -->
@@ -17,12 +17,12 @@
                     <span>周杰伦</span>
                 </div>
                 <div class="music_time_right">
-                    <span >00:00</span>/<span >03:20</span>  
+                    <span id="timeend">00:00</span>/<span id="timestar">03:20</span>  
                 </div>        
             </div>
             <!-- 进度条 -->
             <!-- <div class="progress"><div class="progress_bar"></div><span class="progress_toll"></span></div>  -->
-            <div class="lanren">
+            <div class="lanren" id="lanrenpro">
                 <div class="process" id="precess">
                     <a href="javascript:;" draggable="false" class="bg_value"  id="pre"></a>
                     <a href="javascript:;" draggable="false" class="bg_bar"></a>
@@ -34,7 +34,7 @@
         </div>
         <div class="music_info">
             <div class="music_info">
-                <a href="javascript:;" class="xuanze"><i class="iconfont icon-danquxunhuan"></i></a> 
+                <a href="javascript:;" class="xuanze"><i class="iconfont icon-danquxunhuan" title="单曲循环"></i></a> 
                 <a href="javascript:;" class="tuzi" style="display: none;"><i class="iconfont icon-shunxubofang"></i></a>
                 <a href="javascript:;" class="tuzi" style="display: none;"><i class="iconfont icon-icon-suijibofang"></i></a>
                 <a href="javascript:;" class="tuzi" style="display: none;"><i class="iconfont icon-liebiaoxunhuan"></i></a>  
@@ -44,7 +44,7 @@
             </div>
             <a href="javascript:;" class="tuzi"><i class="iconfont icon-xinxiazai"></i></a>   
             <div class="music_info sound">
-                <a href="javascript:;" class="tuzi"><i class="iconfont icon-xinyinliang"></i></a>
+                <a href="javascript:;" class="tuzi" id="metd"><i class="iconfont icon-xinyinliang"></i></a>
                 <div class="lanren1">
                         <div class="process1" id="precess1">
                             <a href="javascript:;" draggable="false" class="bg_value1"  id="pre1"></a>

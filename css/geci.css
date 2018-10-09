@@ -1,11 +1,11 @@
 *{padding: 0;margin: 0;}
 body,html,.bobo {width: 100%;height: 100%;min-width: 1100px;background-color:#9e9ea0;font-size: 14px;overflow: hidden;}
 a{text-decoration: none;color: #c3c3c3;font-size: 12px;padding-left: 3px;}
-a:hover{color: rgb(50, 204, 153);}
+
 /* commond */
 .bg-img,.bg-img-mask{position: absolute; top: 0;left: 0;}
 /* 背景 */
-.bg-img{min-width: 100%;min-height: 100%; background: url("https://p.qpic.cn/music_cover/ZkTFMk21KjWj9o0kZH0sPKCJC4zgksEOobpEYr0tj0PpGTviaPibRJCg/300?n=1") no-repeat fixed center;z-index: 1;background-size: cover;filter: blur(30px)}
+.bg-img{min-width: 100%;min-height: 100%; background: url("https://y.gtimg.cn/music/photo_new/T002R300x300M000001IqAXi1RikWP.jpg?max_age=2592000") no-repeat fixed center;z-index: 1;background-size: cover;filter: blur(30px)}
 .bg-img-mask { width: 100%;height: 100%; background-color: rgba(0,0,0,.35);z-index: 2;box-shadow: none;}
 /* main */
 .mod_music {position: relative;z-index: 3;height: 100%;margin: 0 6%;}
@@ -41,11 +41,12 @@ a:hover{color: rgb(50, 204, 153);}
 .sound_progress{background-color: #c3c3c3;height: 2px;width: 70%;position: relative;margin-bottom: 20px;border-radius: 12px;top: 28px;}
 .sound_progress_bar{border-radius: 10px;position: absolute;top: 0;left: 0;height: 100%;width: 10%;background-color: #fff;}
 .music_info{display: inline-block;}
-.sound{width: 150px;position: relative;}
+.sound{width: 100px;position: relative;}
 /* footer */
 .music_fo_content{display: block;width: 85%;margin: 0 auto;height: 100%;min-width: 1300px;padding: 0 10px;}
-.tuzi {padding: 5px;position: relative;top: 14px;}
+.tuzi {padding: 5px;position: relative;top: 14px;    display: inline-block;}
 .tuzi  .iconfont {font-size: 18px;}
+#stopfooter{top: 17px;}
 /* .zanting{position: relative;top: 4px;}
 .icon-xinzanting{font-size: 26px !important;} */
 .music_num{font-size: 16px;color: #c3c3c3;position: relative;top: 13px;left: -5px;}
@@ -155,7 +156,7 @@ input[type="button"] {width: 12%;outline: none;border: none;padding: 10px 0;back
 .xuanze{position: relative;top: 12px;}
 
 /* 滚动条 */
-.lanren1{width:100%;background-color: #c3c3c3;position: relative;top:18px;    top: 3px;
+.lanren1{width:100%;background-color: #c3c3c3;position: relative;top:18px;    top: -2px;
     left: 32px;float: left;}
 .process1{width: 100%;height: 2px; position: relative;border-radius: 3px;font-size: 0;background-color: rgba(0, 0, 0, 0.253);}
 .bg_value1{    

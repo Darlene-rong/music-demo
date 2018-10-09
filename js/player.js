@@ -27,33 +27,30 @@ var playerMusic = {
     audioDom: null,
     arrSongs: [],
     index: 0,
-
     //初始化话页面
     init: function() {
         //创建一个音乐对象
         this.audioDom = document.createElement("audio")
         this.audioDom.loop = true;
     },
-
     //添加音乐
     addMusic: function(arrsrc){
+        console.log(arrsrc)
         for(var i =0;i<arrsrc.length;i++){
             //将音乐放入音乐容器中
             this.arrSongs.push(arrsrc[i]);
-            console.log( this.arrSongs)
+            // console.log( this.arrSongs)
         }
-        this.audioDom.src = this.arrSongs[this.index];//初始化播放第一首
-        console.log(this.audioDom.src + this.index)
+         this.audioDom.src = this.arrSongs[this.index];//初始化播放第一首
+        // console.log(this.audioDom.src + this.index)
     },
-
     //播放音乐
     play: function() {
         //播放音乐
         this.audioDom.play();
-        console.log(this.audioDom)
+        // console.log(this.audioDom)
         rotate();
     },
-
     //播放音乐
     player: function() {
         //从音乐的数组中取对应的一首进行播放
@@ -61,7 +58,6 @@ var playerMusic = {
         //音乐播放
         this.audioDom.play()
     },
-
     //暂停音乐
     stop: function() {
         //暂停
@@ -70,20 +66,17 @@ var playerMusic = {
         clearInterval(timer);
         flag = 0;
     },
-
     //上一首
     prev: function() {
         this.index--;
         this.player();
     },
-
     //下一首
     next: function() {
         this.index++;
         
         this.player();
     },
-
     //时间进度
     time: function(callback) {
         var $this = this;
@@ -105,7 +98,6 @@ var playerMusic = {
             }
         }  
     },
-
     //格式化时间
     formateTime: function(time) {
         console.log(time)//214.93551   要进行格式化
@@ -115,7 +107,10 @@ var playerMusic = {
         console.log(time)
         return time;
     },
+    //音量的控制
+    soundCountrol: function() {
 
+    },
     //播放进度的展示
     percent: function(callback) {
         var $this = this;
@@ -131,39 +126,68 @@ var playerMusic = {
             console.log(this.duration)
             var per = Math.floor((this.currentTime/this.duration)*100);
             //总时长减去播放时长  
+            var durationtest = $this.formateTime(this.duration);
             var stime = this.duration - this.currentTime;
             //格式化时间
             var timer = $this.formateTime(stime);
             var stimer = $this.formateTime(this.currentTime);
+            
             var json = {
                 per : per,
                 time : timer,
-                stime : stimer
+                stime : stimer,
+                durationtest: durationtest
             };
             console.log(json)
             if(callback) callback.call(json);
         }
     },
-
     //静音
     stopVolome: function() {
         this.audioDom.muted = !this.audioDom.muted;
     },
-
     //歌词
     songWord: function() {
-
-    },
-
-    //音量的控制
-    soundCountrol: function() {
-
-    },
+        
+    }
 };
-var arr = ["musicfile/001.mp3","musicfile/002.mp3","musicfile/003.mp3","musicfile/004.mp3","musicfile/004.mp3"]
+playerMusic.init();
+var arr = [ "musicfile/001.mp3",
+            "musicfile/002.mp3",
+            "musicfile/003.mp3",
+            "musicfile/一路向北.mp3",
+            "musicfile/周杰伦 - 退后.mp3",
+            "musicfile/005.mp3",
+            "musicfile/ARMNHMR - Closer (ARMNHMR Remix).mp3",
+            "musicfile/Local Sound - Wild.mp3",
+            "musicfile/许嵩 - 玫瑰花的葬礼.mp3",
+            "musicfile/Sam Feldt、Halsey - Colors (Sam Feldt Radio版).mp3",
+
+        ]
 playerMusic.addMusic(arr);
+    //图片转动 随暂停播放进行旋转
+    function rotate() {
+        var deg = 0;
+        flag = 1;
+        timer = setInterval(function(){
+            document.getElementById("image").style.transform = "rotate("+deg+"deg)";
+            deg+=5;
+            if(deg>360) {
+                deg = 0;
+            }
+        },80);
+    }
 
-
-
+    // playerMusic.time(function(){
+    //     // console.log(this.time)
+    //     document.getElementById("timestar").innerHTML = this.time;
+    // })
+    playerMusic.percent(function(){
+        document.getElementById("pre").style.width = this.per + "%";
+        document.getElementById("prevalue").style.left = this.per + "%";
+        console.log(this.per)
+        document.getElementById("timestar").innerHTML = this.durationtest;	
+        document.getElementById("timeend").innerHTML = this.stime;
+    })
 
 
