@@ -1,12 +1,14 @@
-var scrollDom = function(boxDom,preDom,precessDom,textbox){
+var scrollDom = function(boxDom,preDom,precessDom,circleDom){
     this.boxDom = document.getElementById(boxDom);
     this.preDom = document.getElementById(preDom);
     this.precessDom = document.getElementById(precessDom);
-    this.init(textbox);
+    this.circleDom = document.getElementsByClassName(circleDom)
+    this.init();
 };
 scrollDom.prototype = {
     init: function(e){
-        var max = this.precessDom.offsetWidth - document.getElementById("testbox").offsetWidth;
+        var max = this.precessDom.offsetWidth - this.circleDom.offsetWidth;
+        console.log(this.circleDom.offsetWidth)
         var $this = this;
         //鼠标按键被按下时发生的事件
         $this.preDom.onmousedown = function(e) {

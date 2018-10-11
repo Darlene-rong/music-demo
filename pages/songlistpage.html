@@ -4,35 +4,34 @@
         <li class="songlist_header_list songlist_header_person">歌手</li>
         <li class="songlist_header_list songlist_header_time">时长</li>
     </ul> 
-    <ul class="songlist_header">
+    <ul class="songlist_header js_songlistheader" id="js_idsonglist">
         <li class="song_list">
             <div class="song_list_content">
                 <div class="songlist_header_list songlist_header_check song_list_li song_cursor"><input type="checkbox"></div>
                 <div class="songlist_header_list songlist_header_song song_cursor">
-                    <span>1</span>
+                    <span class="listnum"></span>
                     <span>一路向北</span>
                     <div class="songer_tools ">
-                        <a href="javascript:;"><i class="iconfont icon-aixinkong1"></i></a>
-                        <a href="javascript:;"><i class="iconfont icon-bofangjianxiao"></i></a>
+                        <a href="javascript:;" class="js_lover"><i class="iconfont icon-aixinkong1"></i></a>
+                        <a href="javascript:;" class="tuzi js_stop" id="test_stop"><i class="iconfont icon-xinzanting1"></i></a> 
                         <a href="javascript:;" id="xiangxi"><i class="iconfont icon-gongneng" ></i></a>
-                        <!-- 详细 -->
-                        <div class="xiangxi" id="xiangxixi" style="display:none;">
-                            <ul>
-                                <li><a href="javascript:;">播放</a></li>
-                                <li><a href="javascript:;">收藏</a></li>
-                                <li><a href="javascript:;">下载</a></li>
-                                <li><a href="javascript:;">
-                                        <span>添加到</span>
-                                        <span>></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
                 <div class="songlist_header_list songlist_header_person song_cursor">周杰伦</div>
                 <div class="songlist_header_list songlist_header_time ">04:10</div>
             </div> 
         </li>
-
     </ul>
+    <!-- 详细 -->
+    <div class="xiangxi" id="xiangxixi" style="display:none;">
+        <ul>
+            <li><a href="javascript:;">播放</a></li>
+            <li><a href="javascript:;">收藏</a></li>
+            <li><a href="javascript:;">下载</a></li>
+            <li><a href="javascript:;">
+                    <span>添加到</span>
+                    <span>></span>
+                </a>
+            </li>
+        </ul>
+    </div>

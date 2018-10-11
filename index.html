@@ -53,9 +53,9 @@
                 <div class="hr"></div>
                 <div class="song_sheet">
                     <span>我创建的歌单</span>
-                    <a href="javascript:;" class="f_r"><i class="iconfont icon-jiahaotianjia"></i></a>
+                    <a href="javascript:;" class="f_r js_songsheet"><i class="iconfont icon-jiahaotianjia"></i></a>
                 </div>
-                <ul>
+                <ul class="js_songlist songlist_main">
                     <li class="left_li">
                         <a href="javascript:;"><i class="iconfont icon-yinle"></i><span>歌单一</span></a>
                     </li>
@@ -130,75 +130,241 @@
     <script type="text/javascript" src="js/player.js"></script>
     <script>
         //load()方法页面加载
-        $("#gecipage").load("pages/lyricpage.html");
+        $("#gecipage").load("pages/lyricpage.html",function(){
+            console.log("!2")
+            new scrollDom("pre_1","prevalue_1","precess_1","js_cirlctbox");
+            new scrollDom("pre1_1","prevalue1_1","precess1_1","js_cirlctbox")
+        });
         $("#landingPage").load("pages/loginpage.html");
         $("#uploadpage").load("pages/uploadpage.html");
         $("#songlist").load("pages/songlistpage.html");
         $("#footerpage").load("pages/footerpage.html",function(){
-            new scrollDom("pre","prevalue","precess");
-            new scrollDom("pre1","prevalue1","precess1")
+            new scrollDom("pre","prevalue","precess","js_cirlctbox");
+            new scrollDom("pre1","prevalue1","precess1","js_cirlctbox")
         });
         $(document).ready(function(){
         let play ={
             init(){
                 //播放停止切换
-                this.togglePlay();
+                this.list();
                 this.prPrev();
                 this.next();
                 this.muted();
+                this.modeswitch();
+                this.lover();
+                this.addSonesheet();
+                this.homelistPlayer()
                 console.log("1a")
+            },
+            list(){
+                //ajax
+                /*
+                        id: "1",
+                        name: "在路上",
+                        src: "musicfile/小茶 - 在路上.mp3",
+                        autor: "小茶",
+                        lrcSrc: "",
+                */
+                let songArr =[
+                    {
+                        id: "1",
+                        name: "在路上",
+                        src: "musicfile/小茶 - 在路上.mp3",
+                        autor: "小茶",
+                        lrcSrc: "",
+                    },
+                    {
+                        id: "1",
+                        name: "Codeine Crystals",
+                        src: "musicfile/cLouT CoHeN,LILG$TAR - Codeine Crystals.mp3",
+                        autor: "cLouT CoHeN,LILG$TAR",
+                        lrcSrc: "",
+                    },
+                    {
+                        id: "1",
+                        name: "玫瑰花的葬礼",
+                        src: "musicfile/许嵩 - 玫瑰花的葬礼.mp3",
+                        autor: "许嵩",
+                        lrcSrc: "",
+                    },
+                    {
+                        id: "1",
+                        name: "退后",
+                        src: "musicfile/周杰伦 - 退后.mp3",
+                        autor: "周杰伦",
+                        lrcSrc: "",
+                    },
+                    {
+                        id: "1",
+                        name: "Wild",
+                        src: "musicfile/Local Sound - Wild.mp3",
+                        autor: "Local Sound",
+                        lrcSrc: "",
+                    },
+                    {
+                        id: "1",
+                        name: "Colors (Sam Feldt Radio版)",
+                        src: "musicfile/Sam Feldt、Halsey - Colors (Sam Feldt Radio版).mp3",
+                        autor: "Sam Feldt、Halsey",
+                        lrcSrc: "",
+                    },
+                    {
+                        id: "1",
+                        name: "Closer (ARMNHMR Remix)",
+                        src: "musicfile/ARMNHMR - Closer (ARMNHMR Remix).mp3",
+                        autor: "ARMNHMR",
+                        lrcSrc: "",
+                    },
+                    {
+                        id: "1",
+                        name: "抑郁",
+                        src: "musicfile/K418,Bon.Y - 抑郁.mp3",
+                        autor: "K418,Bon.Y",
+                        lrcSrc: "",
+                    },
+                ];
+                var indexSong = songArr.length;
+                var songsrc ="";
+                var arr = [];
+                var ulDoms = document.getElementById("js_idsonglist")
+                for(var i=0;i<indexSong;i++){
+                    var jsonSong = songArr[i];
+                    var time="";
+                    songsrc = songArr[i].src;;
+                    arr.push(songsrc);
+                    playerMusic.time(function(){
+                        console.log(this.time)
+                    })
+                    ulDoms.innerHTML += `
+                    <li class="song_list">
+                        <div class="song_list_content">
+                            <div class="songlist_header_list songlist_header_check song_list_li song_cursor"><input type="checkbox"></div>
+                            <div class="songlist_header_list songlist_header_song song_cursor">
+                                <span class="listnum"></span>
+                                <span>${jsonSong.name}</span>
+                                <div class="songer_tools ">
+                                    <a href="javascript:;" class="js_lover"><i class="iconfont icon-aixinkong1"></i></a>
+                                    <a href="javascript:;" class="tuzi js_stop" id="test_stop"><i class="iconfont icon-xinzanting1"></i></a> 
+                                    <a href="javascript:;" id="xiangxi"><i class="iconfont icon-gongneng" ></i></a>
+                                </div>
+                            </div>
+                            <div class="songlist_header_list songlist_header_person song_cursor">${jsonSong.autor}</div>
+                            <div class="songlist_header_list songlist_header_time js_time" id="">${time}</div>
+                        </div> 
+                    </li>
+                    `
+                }
+                playerMusic.addMusic(arr);
+                console.log()
+              
+
             },
             //上一首切换
             prPrev(){
                 var $this = this;
                 $(".icon-youbofang-copy-copy").click(function(){
-                    $("#stopfooter i").removeClass("icon-xinzanting1");
-                    $("#stopfooter i").addClass("icon-xinzanting");
+                    $(".js_stop i").removeClass("icon-xinzanting1");
+                    $(".js_stop i").addClass("icon-xinzanting");
                     playerMusic.prev();
                    
                 })
             },
             //暂停播放切换
-            togglePlay(){
-                $("#stopfooter").click(function(){
-                    console.log($("#stopfooter i").hasClass("icon-xinzanting1"))
-                    if($("#stopfooter i").hasClass("icon-xinzanting1")){
-                        $("#stopfooter i").removeClass("icon-xinzanting1");
-                        $("#stopfooter i").addClass("icon-xinzanting");
-                        playerMusic.play();
-
-                    } else {
-                        $("#stopfooter i").removeClass("icon-xinzanting");
-                        $("#stopfooter i").addClass("icon-xinzanting1");
-                        playerMusic.stop();
-                    }
-                })
+            togglePlay(val){
+                var arr1 = $(".js_songlistheader").children();
+                if($(arr1[e]).find(".js_stop i").hasClass("icon-xinzanting1")){
+                    $(arr1[e]).find(".js_stop i").removeClass("icon-xinzanting1").addClass("icon-xinzanting");
+                    playerMusic.play();
+                } else {
+                    $(arr1[e]).find(".js_stop i").removeClass("icon-xinzanting").addClass("icon-xinzanting1");
+                    playerMusic.stop();
+                }                    
             },
             //下一首切换
             next(){
                 $(".icon-youbofang").click(function(){
-                    $("#stopfooter i").removeClass("icon-xinzanting1");
-                    $("#stopfooter i").addClass("icon-xinzanting");
+                    $(".js_stop i").removeClass("icon-xinzanting1").addClass("icon-xinzanting");
                     playerMusic.next();
                 })
             },
             //静音切换
             muted(){
-                $("#metd").click(function(){
-                    if($("#metd i").hasClass("icon-xinyinliang")){
-                        $("#metd i").removeClass("icon-xinyinliang");
-                        $("#metd i").addClass("icon-yinliang");
+                $(".js_metd").click(function(){
+                    console.log($(this).find('i').hasClass("icon-xinyinliang"))
+                    if($(this).find('i').hasClass("icon-xinyinliang")){
+                        $(this).find('i').removeClass("icon-xinyinliang").addClass("icon-yinliang");
                         playerMusic.stopVolome();  
                     } else {
-                        $("#metd i").removeClass("icon-yinliang");
-                        $("#metd i").addClass("icon-xinyinliang");
+                        $(this).find('i').removeClass("icon-yinliang").addClass("icon-xinyinliang");
                         playerMusic.stopVolome();  
                     }
-                    
                 })
-            }
+            },
+            //模式切换
+            modeswitch(){
+
+            },
+            //音量播放
+            soundCountrol(){
+                
+            },
+            //收藏
+            lover(){
+                $(".js_lover").click(function(){
+                    console.log($(this).find('i').hasClass("icon-aixinkong1"))
+                    if($(this).find('i').hasClass("icon-aixinkong1")){
+                        $(this).find('i').removeClass("icon-aixinkong1").addClass("icon-aixin1").css("color","red");
+
+                    }else{
+                        $(this).find('i').removeClass("icon-aixin1").addClass("icon-aixinkong1 ").css("color","#fff");
+                    }
+                })
+            },
+            //添加新的歌单
+            addSonesheet(){
+                $(".js_songsheet").click(function(){
+                    var html = `
+                    <li class="left_li">
+                        <input type="text" class="js_input">
+                    </li>
+                    `
+                    var ulDoms = document.getElementsByClassName("js_songlist");
+                    var a = $(".js_songlist").append(html);
+                    console.log(a)
+                    document.onkeydown = function(e){
+                        // var html1 = document.createElement("span");
+                        var html1 = `<a href="javascript:;"> <i class="iconfont icon-yinle"></i><span class="js_content"></span></a>`
+                        if(e.keyCode == 13) {
+                            var val = $(".js_songlist li:last").find("input").val();
+                            $(".js_songlist li:last").remove("input").append(html1);
+                            $(".js_songlist li:last").find(".js_content").html(val);
+                            console.log( $(".left_li").find("input").css("display","none").append(html1).html(val))
+                        }
+                    }
+                })
+            },
+            //列表播放() 
+            homelistPlayer() {
+                var $this = this;
+                var inde = 0;
+                var arrList = $(".js_songlistheader").children();
+                console.log("!121")
+                $.each(arrList, function(index,val) {
+                    $(arrList[index]).find(".listnum").html(index+1);
+                    $(arrList[index]).click(function(){
+                        
+                        $this.togglePlay(index).trigger('click');
+                        
+                })
+			    });
+            },
+            //删除操作
+            deleteList() {}
         }
         play.init();
+
+
+        
         $('input').iCheck({
             checkboxClass: 'icheckbox_flat-grey',
             radioClass: 'iradio_flat-grey'
