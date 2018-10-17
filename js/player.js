@@ -35,16 +35,62 @@ var playerMusic = {
     },
     //添加音乐
     addMusic: function(arrsrc){
-        // console.log(arrsrc)
         for(var i =0;i<arrsrc.length;i++){
             //将音乐放入音乐容器中
             this.arrSongs.push(arrsrc[i]);
-            // console.log( this.arrSongs)
         }
-       
-         this.audioDom.src = this.arrSongs[this.index];//初始化播放第一首
-         console.log(  this.audioDom)
-         // console.log(this.audioDom.src + this.index)
+        this.audioDom.src = this.arrSongs[this.index];//初始化播放第一首
+        return this.arrSongs
+    },
+    //列表歌曲时间
+    listTime: function(arrlis,callback){
+        var $this = this;
+        var lisLength = arrlis.length;
+        var testarr = [];
+        //递归写法 自己调用自己
+        function getTimearr(arr,timearr,index=0,callback){
+            $this.audioDom.src = arrlis[index];
+            $this.audioDom.oncanplaythrough = function() {
+                var totalTime = this.duration;
+                var timer = $this.formateTime(totalTime);
+                var json = {
+                    time: timer,
+                    duration: totalTime,
+                };
+                timearr.push(json);
+                if(index == arr.length-1) {
+                    callback&&callback.call(timearr,timearr)
+                }else{
+                    getTimearr(arr,timearr,++index,callback)
+                }
+            }
+        }
+        getTimearr(arrlis,[],0,callback);
+        //异步同步
+        // (async ()=>{
+        //     for(var i=0;i<lisLength;i++){
+        //         $this.audioDom.src = arrlis[i];
+        //         await (()=>{
+        //             return new Promise((resolve,reject)=>{
+        //                 $this.audioDom.oncanplaythrough = function() {
+        //                     var totalTime = this.duration;
+        //                     //格式化时长
+        //                     var timer = $this.formateTime(totalTime);
+        //                     //回调函数 将值进行返回暴露到对象的外面
+        //                     var json = {
+        //                         duration: totalTime,
+        //                         time: timer
+        //                     };
+        //                     // console.log(json)//{duration: 214.93551, time: "03:34"}
+        //                     testarr.push(json)
+        //                     resolve();
+        //                 }
+        //             })
+        //         })()
+        //     }
+        //     callback&&callback.call(testarr,testarr)
+        //     console.log(testarr);
+        // })()
     },
     //播放音乐
     play: function() {
@@ -54,7 +100,10 @@ var playerMusic = {
         rotate();
     },
     //播放音乐
-    player: function() {
+    player: function(val) {
+        if(val){
+            this.index = val;
+        }
         //从音乐的数组中取对应的一首进行播放
         this.audioDom.src = this.arrSongs[this.index];
         //音乐播放
@@ -90,8 +139,6 @@ var playerMusic = {
     //时间进度
     time: function(callback) {
         var $this = this;
-        // 当视频可以正常播放且无需停顿时执行 JavaScript：
-        // console.log($this.audioDom)
         $this.audioDom.oncanplaythrough = function() {
             console.log(this.duration);
             //获取音频的总时长
@@ -118,10 +165,10 @@ var playerMusic = {
         // console.log(time)
         return time;
     },
+
     //音量的控制
     soundCountrol: function(callback) {
         var x = callback.offset + 20;
-
     },
     //播放进度的展示
     percent: function(callback) {
@@ -132,7 +179,6 @@ var playerMusic = {
             duration：	返回音频的长度（以秒计）。
             floor() 方法执行的是向下取整计算，它返回的是小于或等于函数参数，并且与之最接近的整数。
         */
-       console.log($this.audioDom)
         $this.audioDom.ontimeupdate = function() {
             //计算播放中的时间进度
             // console.log(this.currentTime),
@@ -162,7 +208,6 @@ var playerMusic = {
     songWord: function(e) {
         var x = e.offset;
         this.audioDom.volume = parseFloat(x/100)*1;
-        console.log(this.audioDom.volume)
     },
     //模式切换
     switchMode(){
@@ -170,18 +215,7 @@ var playerMusic = {
     }
 };
 playerMusic.init();
-// var arr = [ "musicfile/001.mp3",
-//             "musicfile/002.mp3",
-//             "musicfile/003.mp3",
-//             "musicfile/一路向北.mp3",
-//             "musicfile/周杰伦 - 退后.mp3",
-//             "musicfile/005.mp3",
-//             "musicfile/ARMNHMR - Closer (ARMNHMR Remix).mp3",
-//             "musicfile/Local Sound - Wild.mp3",
-//             "musicfile/Sam Feldt、Halsey - Colors (Sam Feldt Radio版).mp3",
-//             "musicfile/许嵩 - 玫瑰花的葬礼.mp3",
-//         ]
-// playerMusic.addMusic(arr);
+
     //图片转动 随暂停播放进行旋转
     function rotate() {
         var deg = 0;
@@ -192,9 +226,8 @@ playerMusic.init();
             if(deg>360) {
                 deg = 0;
             }
-        },80);
+        },30);
     }
-
     // playerMusic.time(function(){
     //     // console.log(this.time)
     //     document.getElementById("timestar").innerHTML = this.time;

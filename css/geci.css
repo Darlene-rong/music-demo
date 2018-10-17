@@ -5,7 +5,7 @@ a{text-decoration: none;color: #c3c3c3;font-size: 14px;display: inline-block;}
 /* commond */
 .bg-img,.bg-img-mask{position: absolute; top: 0;left: 0;}
 /* 背景 */
-.bg-img{min-width: 100%;min-height: 100%; background: url("https://y.gtimg.cn/music/photo_new/T002R300x300M000001IqAXi1RikWP.jpg?max_age=2592000") no-repeat fixed center;z-index: 1;background-size: cover;filter: blur(30px)}
+.bg-img{min-width: 100%;min-height: 100%; background: url("https://p.qpic.cn/music_cover/uk9QM7H6D5KAtgzFog6rQnd2Yd45X8tS9XLkvPTib4XQRDRzRQcticwQ/300?n=1") no-repeat fixed center;z-index: 1;background-size: cover;filter: blur(30px)}
 .bg-img-mask { width: 100%;height: 100%; background-color: rgba(0,0,0,.35);z-index: 2;box-shadow: none;}
 /* main */
 .mod_music {position: relative;z-index: 3;height: 100%;margin: 0 6%;}
@@ -200,5 +200,5 @@ input[type="button"] {width: 12%;outline: none;border: none;padding: 10px 0;back
     transform: translateX(7px);
 }
 /* nothing */
-.js_lover{position: relative;top: 13px;}
+.loverfooter{position: relative;top: 13px;}
 #lover{top:-1px !important;}

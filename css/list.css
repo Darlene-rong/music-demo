@@ -35,10 +35,10 @@ ul li{list-style: none;}
 /* 左 内容区 */
 .player_content{position: absolute;top: 50px;bottom: 18%;width: 100%;min-height: 328px;cursor: default;}
 .palyercon_left{position: fixed;width: 200px;min-height: 328px;height: 547px;}
-.left_li{position: relative;top: 10px;padding-left: 50px;line-height: 30px;}
+.left_li{position: relative;top: 10px;padding-left: 10px;line-height: 30px;white-space: nowrap; overflow: hidden;text-overflow: ellipsis;}
 .left_li .iconfont {color: #c3c3c3;position: relative;top: 2px;}
-.left_li span{padding-left: 5px;}
-.left_li:hover{background-color: rgba(107, 105, 105, 0.13);}
+.left_li span{padding-left: 10px;}
+.left_li:hover{background-color: rgba(161, 36, 36, 0.13);}
 .iconfont:hover{color: #fff;}
 .hr{width:190px;border-bottom:1px solid rgba(255,255,255,1);opacity:0.25; margin-top: 15px;margin-left: 4px;}
 .song_sheet{padding: 10px 10px 0 10px;color: #c3c3c3;}
@@ -55,42 +55,54 @@ ul li{list-style: none;}
 .search_music .iconfont {color: rgba(225,225,225,.5);padding-left: 5px;display: inline-block;padding-top: 3px;}
 
 /* 列表 */
-.palyercon_right_list{position: relative;height: 500px;overflow-x: hidden;overflow-y: scroll;margin-top: 10px;}
+.palyercon_right_list{position: relative;height: 405px;overflow-x: hidden;overflow-y: scroll;margin-top: 10px;}
 .palyercon_right_list::-webkit-scrollbar{height: 30px;width: 7px;background-color: rgba(107, 105, 105, 0.13);border-radius: 10px;}
 .palyercon_right_list::-webkit-scrollbar-thumb{height: 10px;background-color: #c3c3c3;border-radius: 10px;} 
 
 .songlist_header{height: 50px;line-height: 50px;color: #c3c3c3;position: relative;margin: 0 10px;}
 .songlist_header_list{display: inline-block;}
-.songlist_header_song{width: 68%;}
+.songlist_header_song{width: 68%;max-height: 50px;}
 .songlist_header_person{width: 20%;color: inherit;}
 .songlist_header_time{position: relative;top: 0;right: 38px;width: 50px;}
 .songlist_header_check{padding-right: 10px;}
 input[type="checkbox"]{height: 14px;width: 14px;}
 
-.songer_tools{display:none;float: right;padding-right: 10px;}
+.songer_tools{display:none;float: right;padding-right: 10px;position: relative;height: 40px;}
 /* none */
-.songer_tools a{padding: 0 5px;}
-.song_list{border-bottom:1px solid #c3c3c3;}
-.song_cursor{cursor: pointer;}
-.song_list_content:hover {background-color: rgba(107, 105, 105, 0.13);color: #fff;}
-.song_list:hover .songer_tools{display: inline-block;color: #fff;}
-/* .song_list:hover a{color: #fff;} */
-.song_list_li{padding: 0 10px;}
+.songer_tools a{padding: 0 5px;display: inline;position: relative;}
+.song_list{border-bottom:1px solid #c3c3c3;position: relative;max-height: 50px;}
+/* .song_cursor{cursor: pointer;} */
+.song_list_content.hover {background-color: rgba(189, 47, 47, 0.13);color: #fff;}
+.song_list_content.active {background-color: rgba(161, 36, 36, 0.13);color: #fff;}
+/* .song_list:hover .songer_tools{display: inline-block;color: #fff;}  */
+/* .song_list:hover a{color: #fff;}
+.song_list_li{padding: 0 10px;}*/
+.conyop{top: 0px !important;}
+.conyop .iconfont {font-size: 19px !important;display: inline-block;}
 
 
 /* 添加到 */
 .add_songer{position: absolute;background-color: rgb(255, 255, 255);top: 39px;left: 373px;z-index: 4;}
 .add_songer ul {width: 110px;text-align: center;}
-.add_songer ul li{line-height: 50px;}
-
+.add_songer ul li{line-height: 45px;}
+.add_songer ul li:nth-child(2){border-bottom:1px solid rgba(206, 204, 204, 0.38);}
+.add_songer ul li:hover{background-color: rgba(124, 124, 124, 0.13);}
+.add_songer ul li a{color: #828282;font-size:14px;}
+.add_songer ul li a:hover{color: rgb(182, 181, 181);}
+.spacile_aa{font-size:12px;font-family:MicrosoftYaHei;font-weight:400;color:rgba(175,174,174,1);padding: 10px 0 5px 0;}
 /* 添加 */
 .palyercon_right_tool_add:active .add_songer{background-color: red;}
-
+/*  */
+.js_xiangxi:hover{color: #908d8d;}
+.xiangxi ul{background-color: #fff;}
 /* 详细 */
-.xiangxi{position: absolute;background-color: rgb(255, 255, 255);top: 31px;left: 701px;}
+.xiangxi{z-index:5;position: absolute;background-color: rgb(255, 255, 255);width: 110px;top: 13px;left: 26px;display: none;}
 .xiangxi ul {width: 110px;text-align: center;}
-.xiangxi ul li:hover,.add_songer ul li:hover {background-color: rgb(65, 62, 62);color: #fff;}
+.xiangxi ul li{color: #908d8d;}
+.xiangxi ul li:hover {color: rgb(182, 181, 181);}
 
+.xiangxi ul li:nth-child(2){border-bottom:1px solid rgba(206, 204, 204, 0.38);}
+.xiangxi ul li:hover{background-color: rgba(124, 124, 124, 0.13);}
 
 /* 弹框 */
 .erro_frame{position: absolute;width: 154px;height: 136px;background:rgba(51,51,51,1);opacity:0.46;border-radius:5px;top: 50%;left: 50%;margin-top: -142px;margin-left: -65px;}
@@ -106,3 +118,20 @@ input[type="checkbox"]{height: 14px;width: 14px;}
 .songlist_main{    height: 381px;overflow-y: scroll;padding-top: 10px;overflow-x: hidden;}
     .songlist_main::-webkit-scrollbar{height: 30px;width: 7px;background-color: rgba(107, 105, 105, 0.13);border-radius: 10px;}
 .songlist_main::-webkit-scrollbar-thumb{height: 10px;background-color: #c3c3c3;border-radius: 10px;} 
+
+/* 弹框提示 */
+.bombpromt{
+    position: absolute;
+    height: 167px;
+    width: 185px;
+    z-index: 7;
+    background-color: #20202096;
+    left: 50%;
+    top: 40%;
+    border-radius: 7px;
+}
+.bombpromt p{
+    text-align: center;
+    line-height: 60px;
+    color: #fff;
+}
